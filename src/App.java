@@ -1,34 +1,49 @@
 import Materia.Stacks.Stack;
+import Materia.Stacks.StackGeneric;
+import Models.Pantalla;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        
-        runStack();
-        
-        
-        
+        //runStack();
+        runStackGeneric();
     }
 
     public static void runStack(){
+
         Stack stack = new Stack();
-        int ingresada = 10;
-        //agregar elementos
+
         stack.push(5);
         stack.push(7);
-        stack.push(ingresada);
-
+        stack.push(10);
         stack.push(20);
+
         stack.printStack();
         int cont = stack.getSize();
-        System.out.println("Tamanio -->" + cont);
-        int cont2 = stack.getSize2();
-        System.out.println("cont2 -->" + cont2);
+        System.out.println("Tamanio: " + cont);
 
-        
-        System.out.println( "Cima   -->" + stack.peek());
-        System.out.println("Retirar-->" + stack.pop());
-        System.out.println( "Cima   -->" + stack.peek());
-        System.out.println("Retirar-->" + stack.pop());
-        System.out.println( "Cima   -->" + stack.peek());
+        System.out.println(stack.getSize2());
+
+
+        System.out.println("Cima    ->" + stack.peek());
+        System.out.println("Retirar ->" + stack.pop());
+        System.out.println("Cima    ->" + stack.peek());
+        System.out.println("Retirar ->" + stack.pop());
+        System.out.println("Cima    ->" + stack.peek());
     }
+
+    public static void runStackGeneric(){
+        StackGeneric<Pantalla> router = new StackGeneric<>();
+        router.push(new Pantalla(1, "Home Page", "/home"));
+        router.push(new Pantalla(1, "Menu Page", "/home/menu"));
+        router.push(new Pantalla(1, "Users Page", "/home/menu/users"));
+
+        System.out.println("Estoy en " + router.peek().getRuta());
+        System.out.println("Regreso a " + ((router.popNode().getNext().getValue().getRuta())));
+        System.out.println("Estoy en " + router.peek().getRuta());
+
+        router.push(new Pantalla(1, "Settings Page", "/home/menu/settings"));
+        System.out.println("Pantallas = " + router.getSize());
+        System.out.println("Estoy en " + router.peek().getRuta());
+    }
+
 }

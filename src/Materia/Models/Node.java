@@ -1,11 +1,11 @@
 package Materia.Models;
 
-public class nodo {
+public class Node {
     private int value;
-    private nodo next;
+    private Node next;
     
 
-    public nodo(int value) {
+    public Node(int value) {
         this.value = value;
         this.next = null;
     }
@@ -23,11 +23,11 @@ public class nodo {
         this.value = value;
     }
 
-    public nodo getNext() {
+    public Node getNext() {
         return next;
     }
 
-    public void setNext(nodo next) {
+    public void setNext(Node next) {
         this.next = next;
     }
     

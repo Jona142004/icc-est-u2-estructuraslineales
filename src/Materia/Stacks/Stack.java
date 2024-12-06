@@ -2,17 +2,17 @@ package Materia.Stacks;
 
 import java.util.EmptyStackException;
 
-import Materia.Models.nodo;
+import Materia.Models.Node;
 
 public class Stack {
-    private nodo top; // nodo en la cima de nuestra pila.
+    private Node top; // nodo en la cima de nuestra pila.
     private int size;
     //Creamos la pila con la cima nula o vacia.
     public Stack(){
         this.top = null;
     }
     public void push(int value){
-        nodo newnodo = new nodo(value);
+        Node newnodo = new Node(value);
         newnodo.setNext(top);
         top = newnodo;
         size++;
@@ -40,7 +40,7 @@ public class Stack {
         return top.getValue();
     }
     public void printStack(){
-        nodo current =  top;
+        Node current =  top;
         while (current != null) {
             System.out.println(current.getValue());
             current = current.getNext();
@@ -49,7 +49,7 @@ public class Stack {
     }
     public int getSize2(){
         int cont = 0;
-        nodo current = top;
+        Node current = top;
         while (current != null) {
             cont ++;
             current = current.getNext();
