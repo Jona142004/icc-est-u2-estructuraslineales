@@ -29,6 +29,10 @@ public class Pantalla {
     }
     public void setRuta(String ruta) {
         this.ruta = ruta;
+    }
+    @Override
+    public String toString() {
+        return "Pantalla [ruta=" + ruta + "]";
     } 
     
     
