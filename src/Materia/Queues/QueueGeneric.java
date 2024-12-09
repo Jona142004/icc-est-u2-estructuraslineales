@@ -1,8 +1,5 @@
 package Materia.Queues;
-
-import java.util.EmptyStackException;
-
-import Materia.Models.Node;
+import java.util.NoSuchElementException;
 import Materia.Models.NodeGeneric;
 
 public class QueueGeneric <T> {
@@ -10,75 +7,64 @@ public class QueueGeneric <T> {
     private NodeGeneric<T> rear;
     private int size;
 
-    public QueueGeneric() {
+
+    //Creamos una cola con nodos vacios
+    public QueueGeneric(){
         this.front = null;
         this.rear = null;
         this.size = 0;
     }
 
-    // Metodo para agregar un elemento a la pila
-
-    public void push(T data){
-        NodeGeneric<T> newNode = new NodeGeneric<>(data);
-        newNode.setNext(front);
-        front = newNode;
+    //Metodo para encolar nodos
+    public void enqueue(T data){
+        NodeGeneric<T> newNode = new NodeGeneric<T>(data);
+        if(isEmpty()){
+            front = newNode;
+            rear = newNode;
+        } else {
+            rear.setNext(newNode);
+            rear = newNode;
+        }
         size++;
     }
 
-    public T pop(){
+    //Desencolar el nodo
+    public NodeGeneric<T> dequeue(){
         if(isEmpty()){
-            throw new EmptyStackException();
+            throw new NoSuchElementException("La cola esta vacia");
         }
-        T value = front.getValue();
+        NodeGeneric<T> node = front;
         front = front.getNext();
+        if(front == null){
+            rear = null;
+        }
         size--;
-        return value;
+        return node;
     }
+
+    //Retorna el primer nodo
+    public T peek(){
+        if(isEmpty()){
+            throw new NoSuchElementException();
+        }
+        return front.getValue();
+    }
+
 
     public boolean isEmpty(){
         return front == null;
     }
 
-    public void QueueStack(){
-        NodeGeneric<T> current = front;
-        while (current != null) {
-            System.out.println(current.getValue());
-            current = current.getNext(); 
-        }
-    }
-
-    public T peek(){
-        if (isEmpty()){
-            throw new EmptyStackException();
-        }
-        return front.getValue();
-    }
-
-    public int getSize(){
-        int cont = 0;
-        NodeGeneric<T> current = front;
-        while (current != null) {
-            cont++;
-            current = current.getNext();
-        }
-        return cont;
-    }
-    public NodeGeneric<T> popNode(){
-        if(isEmpty()){
-            throw new EmptyStackException();
-        }
-        NodeGeneric<T> value = front;
-        front = front.getNext();
-        size--;
-        return value;
-    } 
     public void printQueueGeneric(){
         NodeGeneric<T> current = front;
-        while (current != null) {
+        while(current != null){
             System.out.println(current.getValue());
             current = current.getNext();
-            
         }
+    }
+
+    public int size(){
+        return size;
     }
     
    

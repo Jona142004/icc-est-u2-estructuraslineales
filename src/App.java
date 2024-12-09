@@ -1,5 +1,6 @@
 
 
+import Controller.MenuController;
 import Materia.Queues.Queue;
 import Materia.Queues.QueueGeneric;
 import Materia.Stacks.Stack;
@@ -8,10 +9,18 @@ import Models.Pantalla;
 
 public class App {
     public static void main(String[] args) throws Exception {
+        
+
+
         //runStack();
         runStackGeneric();
         runQueue();
         runQueueGeneric();
+        runContactManager();
+    }
+    public static void runContactManager(){
+        MenuController menuController = new MenuController();
+        menuController.showMenu();
     }
 
     public static void runStack(){
@@ -71,6 +80,7 @@ public class App {
 
     }
     public static void runQueueGeneric(){
+        System.out.println("QUEUE");
         QueueGeneric<Pantalla> colaGenerica = new QueueGeneric<>();
         colaGenerica.enqueue(new Pantalla(1, "Home Page", "/home"));
         colaGenerica.enqueue(new Pantalla(1, "Menu Page", "/home/menu"));
