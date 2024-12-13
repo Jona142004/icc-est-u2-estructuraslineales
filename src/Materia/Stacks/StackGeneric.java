@@ -70,5 +70,21 @@ public class StackGeneric <T> {
         top = top.getNext();
         size--;
         return value;
+    }
+
+    @Override
+    public String toString() {
+        String result = "[";
+    NodeGeneric<T> current = top;
+    while (current != null) {
+        result += current.getValue();
+        if (current.getNext() != null) {
+            result += ", ";
+        }
+        current = current.getNext();
+    }
+    result += "]";
+    return result;
     }   
+    
 }

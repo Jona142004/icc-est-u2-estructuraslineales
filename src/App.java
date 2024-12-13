@@ -1,6 +1,8 @@
 
 
 import Controller.MenuController;
+import Ejercicio_01_sign.SignValidator;
+import Ejercicio_02_sorting.StackSorter;
 import Materia.Queues.Queue;
 import Materia.Queues.QueueGeneric;
 import Materia.Stacks.Stack;
@@ -13,10 +15,12 @@ public class App {
 
 
         //runStack();
-        runStackGeneric();
-        runQueue();
-        runQueueGeneric();
-        runContactManager();
+        //runStackGeneric();
+        //runQueue();
+        //runQueueGeneric();
+        //runContactManager();
+        runSignValidator();
+        runStackSorter();
     }
     public static void runContactManager(){
         MenuController menuController = new MenuController();
@@ -96,4 +100,29 @@ public class App {
         colaGenerica.printQueueGeneric();
 
 }
+    public static void runSignValidator() {
+        SignValidator validator = new SignValidator();
+        System.out.println("([]){}");
+        System.out.println(validator.isValid("([]){}")); 
+        System.out.println("({)}");// true
+        System.out.println(validator.isValid("({)}"));   // false
+    }
+    
+    public static void runStackSorter() {
+        // Crear una instancia de StackGeneric y agregar elementos
+        StackGeneric<Integer> stack = new StackGeneric<>();
+        stack.push(5);
+        stack.push(1);
+        stack.push(4);
+        stack.push(2);
+    
+        System.out.println("Pila antes de ordenar: " + stack);
+    
+        // Usar StackSorter para ordenar la pila
+        StackSorter sorter = new StackSorter();
+        sorter.sortStack(stack);
+    
+        System.out.println("Pila después de ordenar: " + stack);
+    }
+    
 }
