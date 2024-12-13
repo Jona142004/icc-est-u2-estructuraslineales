@@ -1,5 +1,7 @@
 
 
+import java.util.Scanner;
+
 import Controller.MenuController;
 import Ejercicio_01_sign.SignValidator;
 import Ejercicio_02_sorting.StackSorter;
@@ -102,10 +104,16 @@ public class App {
 }
     public static void runSignValidator() {
         SignValidator validator = new SignValidator();
-        System.out.println("([]){}");
-        System.out.println(validator.isValid("([]){}")); 
-        System.out.println("({)}");// true
-        System.out.println(validator.isValid("({)}"));   // false
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingresa una cadena con paréntesis, corchetes o llaves para validar:");
+        String input = scanner.nextLine();
+        if (validator.isValid(input)) {
+            System.out.println("La cadena tiene esta correctamente cerrado.");
+        } else {
+            System.out.println("La cadena no cerrada corrextamente.");
+        }
+
+        scanner.close();
     }
     
     public static void runStackSorter() {
